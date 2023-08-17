@@ -2,7 +2,6 @@ import _ = require("cypress/types/lodash");
 
 
 export class Pom {
-    public static URL: string = "https://seleniumbase.io/demo_page";
     //elements
     public static TextInput: string = "#myTextInput";
     public static TextAreaInput: string = "*[name=textareaName]";
