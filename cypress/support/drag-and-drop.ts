@@ -1,4 +1,4 @@
-export default function dragAndDrop(source: string, target: string): string {
+function dragAndDrop(source: string, target: string): string {
     const script = `function simulateDragDrop(source, destination) {
     const sourceNode = document.querySelector(source);
     const destinationNode = document.querySelector(destination);
@@ -43,6 +43,13 @@ export default function dragAndDrop(source: string, target: string): string {
     var dragEndEvent = createCustomEvent(EVENT_TYPES.DRAG_END)
     dragEndEvent.dataTransfer = event.dataTransfer
     dispatchEvent(sourceNode, EVENT_TYPES.DRAG_END, dragEndEvent)
-}; simulateDragDrop("${source}", "${target}");`;
+}; 
+    simulateDragDrop("${source}", "${target}");`;
     return script;
 };
+
+Cypress.Commands.addAll({
+    dragAndDrop(target: string, destination: string): Cypress.Chainable<JQuery<Element>> {
+        return cy.window().then(win => win.eval(dragAndDrop(target, destination))).get(target);
+    }
+})

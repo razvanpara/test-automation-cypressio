@@ -1,5 +1,4 @@
 import { Pom } from "../framework/pom";
-import dragAndDrop from "../support/drag-and-drop";
 import { AppConfig } from "../framework/types/fixtures";
 
 const appConfigPath = "../fixtures/app-config.json";
@@ -14,7 +13,6 @@ describe("seleniumbase.id demo tests", () => {
       .then(input => input.val().toString())
       .then(value => expect(value).to.be.equal(text));
   });
-
 
   it("Select Dropdown Can Select", () => {
     const text: string = "Set to 50%";
@@ -52,10 +50,8 @@ describe("seleniumbase.id demo tests", () => {
           left: initialX,
           top: initialY
         } = draggableInit.position();
-
-        cy.window()
-          .then(win => win.eval(dragAndDrop(Pom.Draggable, Pom.DragAndDropTo)))
-          .get(Pom.Draggable)
+        
+        cy.dragAndDrop(Pom.Draggable, Pom.DragAndDropTo)
           .then(dragableAfter => {
             const {
               left: afterX,

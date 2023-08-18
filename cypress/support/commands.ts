@@ -35,3 +35,21 @@
 //     }
 //   }
 // }
+
+export { };
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            /**
+            * Performs drag and drop on DOM elements
+            * 
+            * target - css selector of the element to be dragged and dropped
+            * 
+            * destination - css selector of target that will receive the dropped element.
+            * 
+            * After the target is dragged on top of the destination, the target element is returned.
+            */
+            dragAndDrop(target: string, destination: string): Cypress.Chainable<JQuery<Element>>
+        }
+    }
+}
