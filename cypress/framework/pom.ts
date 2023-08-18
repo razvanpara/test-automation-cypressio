@@ -1,6 +1,3 @@
-import _ = require("cypress/types/lodash");
-
-
 export class Pom {
     //elements
     public static TextInput: string = "#myTextInput";
