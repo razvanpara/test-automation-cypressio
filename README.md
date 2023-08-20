@@ -1,4 +1,4 @@
-# This is a web test framework POC using Cypress
+# This is a web test framework POC using Cypress.io
 
 ### Requirements:
 - node js 
